@@ -1,0 +1,136 @@
+# This is an i18n string list. Define key-value pairs for translations. Example:
+# hello=Hello
+
+# Lines starting with "#" are treated as comments and will be ignored.
+
+# Placeholders can be used in values with {0}, {1}, {2}, etc. format.
+# Use I18n.G(key, arg0, arg1, ...) or I18n.GetString(key, arg0, arg1, ...) to format strings. For example:
+# welcome=Welcome, {0}! (-> I18n.G("welcome", "John") -> "Welcome, John!")
+
+# Keys like "ue/{tag}/{name or class}/{property}" are applied to VisualTree elements. For example:
+# ue/fooTag/#fooField/text=Hello (I18n.Apply("fooTag", root) -> root.Q("fooField").text = "Hello";)
+# ue/fooTag/.bar-class/label=Hello (I18n.Apply("fooTag", root) -> root.Q(null, "bar-class").label = "Hello";)
+# ue/fooTag/#fooField.bar-class.qux-class/tooltip=Hello (I18n.Apply("fooTag", root) -> root.Q(null, "bar-class", ".qux-class").tooltip = "Hello";)
+# ue/fooTag/#quuxDropdown/choices=Hello,Good Evening (I18n.Apply("fooTag", root) -> root.Q("quuxDropdown").choices = new List<string>{"Hello", "Good Evening"};)
+# Currently, only the "text", "label", "tooltip", and "choices" properties are supported.
+
+### DollyDollEditor
+
+# FileSection
+ue/DollyDoll/FileSection/text=File
+ue/DollyDoll/LoadButton/text=Load
+ue/DollyDoll/ReloadButton/text=Reload
+ue/DollyDoll/SaveAsButton/text=Save As
+ue/DollyDoll/SaveButton/text=Save
+
+# OscSection
+ue/DollyDoll/OscSection/text=OSC Integration
+ue/DollyDoll/ImportOnSave/label=Import on Save
+ue/DollyDoll/ForceImport/label=Force Import
+ue/DollyDoll/LoadOnExport/label=Load on Export
+
+# PlaybackSection
+ue/DollyDoll/PlaybackSection/text=Playback
+ue/DollyDoll/PathIndexLabel/text=Path Index
+ue/DollyDoll/PrevButton/text=<
+ue/DollyDoll/NextButton/text=>
+ue/DollyDoll/Progress/label=Progress
+
+# DollySettingSection
+ue/DollyDoll/DollySettingSection/text=Dolly Settings
+ue/DollyDoll/MotionControl/label=Motion Control
+ue/DollyDoll/MotionControl/tooltip=Select the animation control method. For time-based, you can specify time; for speed-based, you can specify movement speed for each node.
+ue/DollyDoll/MotionControl/choices=Time Based,Speed Based
+ue/DollyDoll/Easing/label=Easing
+ue/DollyDoll/Easing/tooltip=Select the easing curve to use for time-based animations.
+ue/DollyDoll/Easing/choices=None,InSine,OutSine,InOutSine,InQuart,OutQuart,InOutQuart,InExpo,OutExpo,InOutExpo,InBounce,OutBounce,InOutBounce
+ue/DollyDoll/PathType/label=Path Type
+ue/DollyDoll/PathType/tooltip=Select the path interpolation method.\n- Fitted: Very smooth. May not pass through all points.\n- Loose: Less smooth than fitted but passes through all points.\n- Linear: Straight lines.
+ue/DollyDoll/PathType/choices=Fitted,Loose,Linear
+ue/DollyDoll/Looping/label=Looping
+ue/DollyDoll/Looping/tooltip=Select the animation loop method.
+ue/DollyDoll/Looping/choices=None,Repeat,Reverse,Revolve
+
+# NodeOperationSection
+ue/DollyDoll/NodeOperationSection/text=Node Operations
+ue/DollyDoll/AddNodeButton/text=Add Node
+
+# CircleGenSection
+ue/DollyDoll/CircleGenSection/text=Circle Node Generation
+ue/DollyDoll/Radius/label=Radius
+ue/DollyDoll/Radius/tooltip=Specify the radius of the circle. Please specify a positive number.
+ue/DollyDoll/RadiusDelta/label=Radius Delta
+ue/DollyDoll/RadiusDelta/tooltip=The amount by which the radius increases for each node. Use this to arrange nodes in a spiral pattern.
+ue/DollyDoll/YDelta/label=Y Delta
+ue/DollyDoll/YDelta/tooltip=The Y-direction (height) increment for each node. 0 for horizontal circle, increase value for spiral shape.
+ue/DollyDoll/ThetaDelta/label=Angle Delta
+ue/DollyDoll/ThetaDelta/tooltip=The angle (degrees) between nodes. Positive for counterclockwise, negative for clockwise placement. 90 makes 4 nodes for one full circle.
+ue/DollyDoll/Count/label=Node Count
+ue/DollyDoll/Count/tooltip=The number of nodes to generate. Please specify 1 or more.
+ue/DollyDoll/LookAt/label=Look At
+ue/DollyDoll/LookAt/tooltip=The Transform target that each node should look at. If not specified, nodes will look toward the center.
+ue/DollyDoll/CircleGenButton/text=Generate
+
+# Settings Section
+ue/DollyDoll/SettingSection/text=Settings
+ue/DollyDoll/VrcHost/label=OSC VRC Host
+ue/DollyDoll/VrcHost/tooltip=The host address for OSC communication to VRC. Usually 127.0.0.1.
+ue/DollyDoll/OscVrcPort/label=OSC VRC Port
+ue/DollyDoll/OscUnityPort/label=OSC Unity Port
+
+# dynamic labels
+playback/play=Play
+playback/stop=Stop
+osc/connect=Connect
+osc/disconnect=Disconnect
+
+# validation messages and status texts
+validation/fileNotSpecified=No file specified
+validation/totalNodesOver=The total number of camera nodes exceeds {1} (current: {0}). Cannot be imported into VRChat.
+validation/totalNodesOverPico=The total number of camera nodes exceeds {1} (current: {0}). Cannot be imported into VRChat on Pico/Android.
+validation/pathNodesOver=Path {0} has more than {2} camera nodes (current: {1}). Cannot be imported into VRChat.
+validation/pathNodesOverPico=Path {0} has more than {2} camera nodes (current: {1}). Cannot be imported into VRChat on Pico/Android.
+validation/radiusMustBePositive=Radius must be greater than 0.
+validation/countMustBePositive=Node count must be 1 or more.
+validation/thetaDeltaMustBeNonZero=ThetaDelta (angle) must not be zero.
+
+### DollyDollCameraNodeEditor
+# labels and tooltips
+DollyDollCameraNode/IsLocal/label=Local Coordinates
+DollyDollCameraNode/IsLocal/tooltip=On=Local coordinates, Off=World coordinates
+DollyDollCameraNode/FocalDistance/label=Focal Distance
+DollyDollCameraNode/FocalDistance/tooltip=Focal distance for depth of field. (0-10)
+DollyDollCameraNode/Aperture/label=Aperture
+DollyDollCameraNode/Aperture/tooltip=Aperture value for depth of field. Smaller values create stronger blur. (1.4-32)
+DollyDollCameraNode/Hue/label=Hue
+DollyDollCameraNode/Hue/tooltip=Green screen hue. (0-360)
+DollyDollCameraNode/Saturation/label=Saturation
+DollyDollCameraNode/Saturation/tooltip=Green screen saturation. (0-100)
+DollyDollCameraNode/Lightness/label=Lightness
+DollyDollCameraNode/Lightness/tooltip=Green screen lightness. (0-50)
+DollyDollCameraNode/LookAtMeXOffset/label=LookAtMe X Offset
+DollyDollCameraNode/LookAtMeXOffset/tooltip=Look-At-Me horizontal offset. (-25 to 25)
+DollyDollCameraNode/LookAtMeYOffset/label=LookAtMe Y Offset
+DollyDollCameraNode/LookAtMeYOffset/tooltip=Look-At-Me vertical offset. (-25 to 25)
+DollyDollCameraNode/Zoom/label=Zoom
+DollyDollCameraNode/Zoom/tooltip=Camera field of view. Smaller values make it more telephoto. (20-150)
+DollyDollCameraNode/Speed/label=Movement Speed
+DollyDollCameraNode/Speed/tooltip=Movement speed for speed-based mode. (0.1-15)
+DollyDollCameraNode/Duration/label=Movement Time
+DollyDollCameraNode/Duration/tooltip=Movement time (seconds) for time-based mode. (0.1-60)
+DollyDollCameraNode/Index/label=Index
+DollyDollCameraNode/Index/tooltip=Cannot be edited here as it is linked to the order in the hierarchy.
+DollyDollCameraNode/PathIndex/label=Path Index
+DollyDollCameraNode/PathIndex/tooltip=The path number this node belongs to. Must start from 0.
+DollyDollCameraNode/T/label=T
+DollyDollCameraNode/T/tooltip=Ratio of the distance from the start to this node to the total spline length
+
+### dialog
+dialog/title/error=DollyDoll - Error
+dialog/message/invalidFileExtension=Invalid file extension. Please select a JSON file.
+dialog/title/load=DollyDoll - Select JSON File
+dialog/title/save=DollyDoll - Select JSON File
+dialog/message/jsonParseFailed=Failed to parse JSON. It may not be a camera path file, or there may be a bug in this tool.
+
+### Osc
+Osc/error/nonAscii=The path contains non-ASCII characters. Due to VRChat specifications, non-ASCII characters are not supported. If you create a symbolic link named 'myDocuments' in the parent folder of Assets pointing to your Documents folder, this tool will use that path.

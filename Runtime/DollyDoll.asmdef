@@ -1,0 +1,22 @@
+{
+    "name": "com.somekasu.DollyDoll",
+    "rootNamespace": "",
+    "references": [
+        "GUID:21d1eb854b91ade49bc69a263d12bee2",
+        "GUID:d8b63aba1907145bea998dd612889d6b",
+        "GUID:7b4b8ddafd710964f8c6a9a1cb414feb",
+        "GUID:3a24ef119e30a1a4ea61cebaba2ed574"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [
+        "com.somekasu.DollyDoll.external.neuecc.unirx.Runtime.dll",
+        "Newtonsoft.Json.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,76 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/SomekaVrcUnityExtension/DollyDoll/Resources/DollyDoll/DollyDollStyleSheet.uss?fileID=7433441132597879392&amp;guid=410b98c0b61909940ad9cf81f66449aa&amp;type=3#DollyDollStyleSheet" />
+    <ui:VisualElement name="Root" class="dd-root">
+        <ui:VisualElement name="NodesCountValidationHelpBox" class="dd-help-box" style="display: none;">
+            <ui:VisualElement class="dd-help-box-warning-icon" />
+            <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="NodesCountValidationHelpBoxLabel" />
+        </ui:VisualElement>
+        <ui:Foldout text="ファイル" name="FileSection">
+            <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap; justify-content: flex-end;">
+                <ui:VisualElement class="dd-button-box">
+                    <ui:Button text="読込" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LoadButton" />
+                    <ui:Button text="再読込" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ReloadButton" />
+                </ui:VisualElement>
+                <ui:VisualElement class="dd-button-box">
+                    <ui:Button text="保存" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SaveAsButton" />
+                    <ui:Button text="上書き" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SaveButton" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:Label tabindex="-1" text="ファイル未指定" parse-escape-sequences="true" display-tooltip-when-elided="true" name="JSONName" style="-unity-text-align: upper-right; margin-right: 4px;" />
+        </ui:Foldout>
+        <ui:Foldout text="OSC連携" name="OscSection">
+            <ui:Toggle label="保存時にインポート" name="ImportOnSave" />
+            <ui:Toggle label="強制インポート" name="ForceImport" />
+            <ui:Toggle label="エクスポート時に読込" name="LoadOnExport" />
+            <ui:VisualElement class="dd-button-box" style="flex-grow: 1;">
+                <ui:Button text="開始" parse-escape-sequences="true" display-tooltip-when-elided="true" name="OscButton" style="align-self: flex-end; width: 100px;" />
+            </ui:VisualElement>
+        </ui:Foldout>
+        <ui:Foldout text="再生" name="PlaybackSection">
+            <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap; justify-content: flex-end;">
+                <ui:Label tabindex="-1" text="Path Index" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PathIndexLabel" style="-unity-text-align: middle-left; margin-left: 3px;" />
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row; justify-content: flex-end;">
+                    <ui:Button text="&lt;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PrevButton" />
+                    <ui:Label tabindex="-1" text="0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PathIndexText" style="-unity-text-align: middle-left; padding-left: 6px;" />
+                    <ui:Button text="&gt;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="NextButton" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:Slider label="Progress" high-value="1" name="Progress" show-input-field="true" low-value="0" />
+            <ui:VisualElement class="dd-button-box" style="flex-grow: 1;">
+                <ui:Button text="再生" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PlayButton" style="width: 100px; align-self: flex-end;" />
+            </ui:VisualElement>
+        </ui:Foldout>
+        <ui:Foldout text="ドリー設定" name="DollySettingSection">
+            <ui:DropdownField label="MotionControl" name="MotionControl" />
+            <ui:DropdownField label="Easing" name="Easing" />
+            <ui:DropdownField label="PathType" name="PathType" />
+            <ui:DropdownField label="Looping" name="Looping" />
+        </ui:Foldout>
+        <ui:Foldout text="ノード操作" name="NodeOperationSection">
+            <ui:VisualElement class="dd-button-box" style="flex-grow: 1;">
+                <ui:Button text="ノード追加" parse-escape-sequences="true" display-tooltip-when-elided="true" name="AddNodeButton" style="width: 100px;" />
+            </ui:VisualElement>
+        </ui:Foldout>
+        <ui:Foldout text="円周ノード生成" name="CircleGenSection">
+            <ui:FloatField label="Radius" value="42.2" name="Radius" />
+            <ui:FloatField label="RadiusDelta" value="42.2" name="RadiusDelta" />
+            <ui:FloatField label="YDelta" value="42.2" name="YDelta" />
+            <ui:FloatField label="ThetaDelta" value="42.2" name="ThetaDelta" />
+            <ui:IntegerField label="Count" value="42" name="Count" />
+            <uie:ObjectField label="LookAt" name="LookAt" type="UnityEngine.Transform, UnityEngine.CoreModule" />
+            <ui:VisualElement name="CircleGenHelpBox" class="dd-help-box" style="display: none;">
+                <ui:VisualElement class="dd-help-box-warning-icon" />
+                <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CircleGenHelpBoxLabel" />
+            </ui:VisualElement>
+            <ui:VisualElement class="dd-button-box" style="flex-grow: 1;">
+                <ui:Button text="ノードを生成" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CircleGenButton" style="width: 100px;" />
+            </ui:VisualElement>
+        </ui:Foldout>
+        <ui:Foldout text="設定" name="SettingSection">
+            <ui:DropdownField label="Language" name="Locale" />
+            <ui:TextField picking-mode="Ignore" label="OSC VRC側ホスト" value="filler text" name="VrcHost" />
+            <ui:IntegerField label="OSC VRC側ポート" value="42" name="OscVrcPort" />
+            <ui:IntegerField label="OSC Unity側ポート" value="42" name="OscUnityPort" />
+        </ui:Foldout>
+    </ui:VisualElement>
+</ui:UXML>

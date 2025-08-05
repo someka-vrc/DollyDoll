@@ -1,0 +1,137 @@
+# This is an i18n string list. Define key-value pairs for translations. Example:
+# hello=Hello
+
+# Lines starting with "#" are treated as comments and will be ignored.
+
+# Placeholders can be used in values with {0}, {1}, {2}, etc. format.
+# Use I18n.G(key, arg0, arg1, ...) or I18n.GetString(key, arg0, arg1, ...) to format strings. For example:
+# welcome=Welcome, {0}! (-> I18n.G("welcome", "John") -> "Welcome, John!")
+
+# Keys like "ue/{tag}/{name or class}/{property}" are applied to VisualTree elements. For example:
+# ue/fooTag/#fooField/text=Hello (I18n.Apply("fooTag", root) -> root.Q("fooField").text = "Hello";)
+# ue/fooTag/.bar-class/label=Hello (I18n.Apply("fooTag", root) -> root.Q(null, "bar-class").label = "Hello";)
+# ue/fooTag/#fooField.bar-class.qux-class/tooltip=Hello (I18n.Apply("fooTag", root) -> root.Q(null, "bar-class", ".qux-class").tooltip = "Hello";)
+# ue/fooTag/#quuxDropdown/choices=Hello,Good Evening (I18n.Apply("fooTag", root) -> root.Q("quuxDropdown").choices = new List<string>{"Hello", "Good Evening"};)
+# Currently, only the "text", "label", "tooltip", and "choices" properties are supported.
+
+### DollyDollEditor
+# ドロップダウンは日本語名に本来の英名を添えてある
+
+# FileSection
+ue/DollyDoll/FileSection/text=ファイル
+ue/DollyDoll/LoadButton/text=読込
+ue/DollyDoll/ReloadButton/text=再読込
+ue/DollyDoll/SaveAsButton/text=保存
+ue/DollyDoll/SaveButton/text=上書き
+
+# OscSection
+ue/DollyDoll/OscSection/text=OSC連携
+ue/DollyDoll/ImportOnSave/label=保存時にインポート
+ue/DollyDoll/ForceImport/label=強制インポート
+ue/DollyDoll/LoadOnExport/label=エクスポート時に読込
+
+# PlaybackSection
+ue/DollyDoll/PlaybackSection/text=再生
+ue/DollyDoll/PathIndexLabel/text=パス番号
+ue/DollyDoll/PrevButton/text=<
+ue/DollyDoll/NextButton/text=>
+ue/DollyDoll/Progress/label=進行度
+
+# DollySettingSection
+ue/DollyDoll/DollySettingSection/text=ドリー設定
+ue/DollyDoll/MotionControl/label=モーション制御
+ue/DollyDoll/MotionControl/tooltip=アニメーションの制御方式を選択します。時間ベースの場合は時間、速度ベースの場合は移動速度を各ノードで指定できます。
+ue/DollyDoll/MotionControl/choices=時間 - Time Based,速度 - Speed Based
+ue/DollyDoll/Easing/label=イージング
+ue/DollyDoll/Easing/tooltip=時間ベースのアニメーション時に使用するイージングカーブを選択します。
+ue/DollyDoll/Easing/choices=なし - None,正弦加速 - InSine,正弦減速 - OutSine,正弦緩急 - InOutSine,四乗加速 - InQuart,四乗減速 - OutQuart,四乗緩急 - InOutQuart,指数加速 - InExpo,指数減速 - OutExpo,指数緩急 - InOutExpo,バウンド加速 - InBounce,バウンド減速 - OutBounce,バウンド緩急 - InOutBounce
+ue/DollyDoll/PathType/label=パスタイプ
+ue/DollyDoll/PathType/tooltip=パスの補間方法を選択します。\n- フィット：とても滑らか。すべての点を通るとは限りません。\n- なめらか：滑らかさがフィットに劣るが、すべての点を通ります。\n- リニア：直線。
+ue/DollyDoll/PathType/choices=フィット - Fitted,なめらか - Loose,リニア - Linear
+ue/DollyDoll/Looping/label=ループ
+ue/DollyDoll/Looping/tooltip=アニメーションのループ方法を選択します。
+ue/DollyDoll/Looping/choices=なし - None,繰り返す - Repeat,巻き戻す - Reverse,繰り返す(補間あり) - Revolve
+
+# NodeOperationSection
+ue/DollyDoll/NodeOperationSection/text=ノード操作
+ue/DollyDoll/AddNodeButton/text=ノード追加
+
+# CircleGenSection
+ue/DollyDoll/CircleGenSection/text=円周ノード生成
+ue/DollyDoll/Radius/label=半径
+ue/DollyDoll/Radius/tooltip=円の半径を指定します。正の数を指定してください。
+ue/DollyDoll/RadiusDelta/label=半径差分
+ue/DollyDoll/RadiusDelta/tooltip=各ノードごとに半径が増加する量です。渦巻き状に配置したい場合に使用します。
+ue/DollyDoll/YDelta/label=Y差分
+ue/DollyDoll/YDelta/tooltip=各ノードごとのY方向（高さ）の増分です。0で水平円、値を増やすと螺旋状になります。
+ue/DollyDoll/ThetaDelta/label=角度差分
+ue/DollyDoll/ThetaDelta/tooltip=ノード間の角度（度数）です。正なら反時計回り、負なら時計回りに配置されます。90なら4つで1周になります。
+ue/DollyDoll/Count/label=ノード数
+ue/DollyDoll/Count/tooltip=生成するノードの数です。1以上を指定してください。
+ue/DollyDoll/LookAt/label=LookAt
+ue/DollyDoll/LookAt/tooltip=各ノードが向く対象のTransformです。未指定の場合は中心方向を向きます。
+ue/DollyDoll/CircleGenButton/text=ノードを生成
+
+# SettingSection
+ue/DollyDoll/SettingSection/text=設定
+ue/DollyDoll/VrcHost/label=OSC VRC側ホスト
+ue/DollyDoll/VrcHost/tooltip=OSC通信でVRC側に接続するホストアドレスです。通常は127.0.0.1。
+ue/DollyDoll/OscVrcPort/label=OSC VRC側ポート
+ue/DollyDoll/OscUnityPort/label=OSC Unity側ポート
+
+# dynamic labels
+playback/play=再生
+playback/stop=停止
+osc/connect=接続
+osc/disconnect=接続解除
+
+# validation messages and status texts
+validation/fileNotSpecified=ファイル未指定
+validation/totalNodesOver=カメラノード総数が{1}を超えています（現在: {0}）。VRChatにインポートできません。
+validation/totalNodesOverPico=カメラノード総数が{1}を超えています（現在: {0}）。Pico/AndroidではVRChatにインポートできません。
+validation/pathNodesOver=パス {0} のカメラノード数が{2}を超えています（現在: {1}）。VRChatにインポートできません。
+validation/pathNodesOverPico=パス {0} のカメラノード数が{2}を超えています（現在: {1}）。Pico/AndroidではVRChatにインポートできません。
+validation/radiusMustBePositive=半径は0より大きい値でなければなりません。
+validation/countMustBePositive=ノード数は1以上でなければなりません。
+validation/thetaDeltaMustBeNonZero=ThetaDelta（角度）は0以外でなければなりません。
+
+### DollyDollCameraNodeEditor
+# labels and tooltips
+DollyDollCameraNode/IsLocal/label=ローカル座標
+DollyDollCameraNode/IsLocal/tooltip=オン=ローカル座標, オフ=ワールド座標
+DollyDollCameraNode/FocalDistance/label=フォーカス距離
+DollyDollCameraNode/FocalDistance/tooltip=被写界深度のフォーカス距離です。(0-10)
+DollyDollCameraNode/Aperture/label=絞り値
+DollyDollCameraNode/Aperture/tooltip=被写界深度の絞り値です。値が小さいほどボケが強くなります。(1.4-32)
+DollyDollCameraNode/Hue/label=色相
+DollyDollCameraNode/Hue/tooltip=グリーンスクリーンの色相です。(0-360)
+DollyDollCameraNode/Saturation/label=彩度
+DollyDollCameraNode/Saturation/tooltip=グリーンスクリーンの彩度です。(0-100)
+DollyDollCameraNode/Lightness/label=輝度
+DollyDollCameraNode/Lightness/tooltip=グリーンスクリーンの輝度です。(0-50)
+DollyDollCameraNode/LookAtMeXOffset/label=LookAtMe X オフセット
+DollyDollCameraNode/LookAtMeXOffset/tooltip=Look-At-Meの水平方向オフセットです。(-25～25)
+DollyDollCameraNode/LookAtMeYOffset/label=LookAtMe Y オフセット  
+DollyDollCameraNode/LookAtMeYOffset/tooltip=Look-At-Meの垂直方向オフセットです。(-25～25)
+DollyDollCameraNode/Zoom/label=ズーム
+DollyDollCameraNode/Zoom/tooltip=カメラの視野角です。値が小さいほど望遠になります。(20-150)
+DollyDollCameraNode/Speed/label=移動速度
+DollyDollCameraNode/Speed/tooltip=速度ベース時の移動速度です。(0.1-15)
+DollyDollCameraNode/Duration/label=移動時間
+DollyDollCameraNode/Duration/tooltip=時間ベース時の移動時間（秒）です。(0.1-60)
+DollyDollCameraNode/Index/label=インデックス
+DollyDollCameraNode/Index/tooltip=ヒエラルキー上の順番に連動するため、ここでは編集できません。
+DollyDollCameraNode/PathIndex/label=パス番号
+DollyDollCameraNode/PathIndex/tooltip=このノードが属するパスの番号です。0始まりである必要があります。
+DollyDollCameraNode/T/label=T
+DollyDollCameraNode/T/tooltip=始点からこのノードまでの長さとスプライン総延長の比率
+
+### dialog
+dialog/title/error=DollyDoll - エラー
+dialog/message/invalidFileExtension=ファイルの拡張子が無効です。JSONファイルを選択してください。
+dialog/title/load=DollyDoll - JSONファイル選択
+dialog/title/save=DollyDoll - JSONファイル選択
+dialog/message/jsonParseFailed=JSONの解析に失敗しました。カメラパス用のファイルでないか、このツールにバグがある可能性があります。
+
+### Osc
+Osc/error/nonAscii=パスが非ASCII文字を含んでいます。VRChatの仕様上、非ASCII文字はサポートされていません。Assetsの親フォルダに、ドキュメントフォルダを指す 'myDocuments' というシンボリックリンクを作成すると、このツールはそのパスを使用します。

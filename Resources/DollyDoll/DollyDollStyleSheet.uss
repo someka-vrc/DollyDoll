@@ -1,0 +1,65 @@
+.dd-root {
+    flex-grow: 1;
+    margin-top: 4px;
+    margin-right: 4px;
+    margin-bottom: 4px;
+    margin-left: 4px;
+    -unity-font: resource('DollyDoll/MPLUS1p-Medium');
+    -unity-font-definition: initial;
+}
+
+.dd-help-box {
+    flex-direction: row;
+    border-top-color: var(--unity-colors-helpbox-border);
+    border-right-color: var(--unity-colors-helpbox-border);
+    border-bottom-color: var(--unity-colors-helpbox-border);
+    border-left-color: var(--unity-colors-helpbox-border);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    padding-left: 2px;
+    background-color: var(--unity-colors-helpbox-background);
+    margin-bottom: 2px;
+}
+
+.dd-help-box-warning-icon {
+    width: 24px;
+    height: 24px;
+    margin-top: 6px;
+    margin-right: 6px;
+    margin-bottom: 6px;
+    margin-left: 6px;
+    flex-shrink: 0;
+    background-image: var(--unity-icons-console_entry_warn);
+}
+
+.dd-help-box > Label {
+    white-space: normal;
+    flex-shrink: 1;
+    flex-grow: 1;
+}
+
+Foldout > #unity-content {
+    margin-left: 0;
+}
+
+.dd-button-box {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-self: flex-end;
+}
+
+.dd-button-box > Button {
+    width: 70px;
+}
+
+Button {
+    margin-right: 0;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    margin-left: 6px;
+}

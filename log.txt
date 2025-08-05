@@ -1,0 +1,168 @@
+StackOverflowException: The requested operation caused a stack overflow.
+  at (wrapper managed-to-native) System.String.FastAllocateString(int)
+  at System.String.CreateStringFromEncoding (System.Byte* bytes, System.Int32 byteLength, System.Text.Encoding encoding) [0x00013] in <27124aa0e30a41659b903b822b959bc7>:0 
+  at System.Text.Encoding.GetString (System.Byte* bytes, System.Int32 byteCount) [0x00033] in <27124aa0e30a41659b903b822b959bc7>:0 
+  at System.Text.Encoding.GetString (System.ReadOnlySpan`1[T] bytes) [0x00013] in <27124aa0e30a41659b903b822b959bc7>:0 
+  at System.String.Ctor (System.SByte* value, System.Int32 startIndex, System.Int32 length, System.Text.Encoding enc) [0x0006d] in <27124aa0e30a41659b903b822b959bc7>:0 
+  at System.String.CreateString (System.SByte* value, System.Int32 startIndex, System.Int32 length, System.Text.Encoding enc) [0x00000] in <27124aa0e30a41659b903b822b959bc7>:0 
+  at (wrapper managed-to-managed) System.String..ctor(sbyte*,int,int,System.Text.Encoding)
+  at UnityEngine.StackTraceUtility.ExtractStackTrace () [0x0002c] in <cb81df0c49c643b1a04d9fc6ccca2433>:0 
+  at (wrapper managed-to-native) UnityEngine.DebugLogHandler.Internal_Log(UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+  at UnityEngine.DebugLogHandler.LogFormat (UnityEngine.LogType logType, UnityEngine.Object context, System.String format, System.Object[] args) [0x0000b] in <cb81df0c49c643b1a04d9fc6ccca2433>:0 
+  at UnityEngine.Logger.Log (UnityEngine.LogType logType, System.Object message) [0x00027] in <cb81df0c49c643b1a04d9fc6ccca2433>:0 
+  at Somekasu.DollyDoll.MyLogger.Log (UnityEngine.LogType logType, System.Object message) [0x0000c] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\MyLog.cs:238 
+  at Somekasu.DollyDoll.MyLog.LogDebug (System.Object message) [0x0000a] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\MyLog.cs:34 
+  at Somekasu.DollyDoll.DollyDollService..ctor (Somekasu.DollyDoll.DollyDoll dollyDoll) [0x0001e] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Service\DollyDollService.cs:28 
+  at Somekasu.DollyDoll.DollyDoll.get_Service () [0x00000] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Component\DollyDoll.cs:27 
+  at Somekasu.DollyDoll.DollyDoll.get_OnSplineUpdated () [0x00000] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Component\DollyDoll.cs:139 
+  at Somekasu.DollyDoll.PlaybackService..ctor (Somekasu.DollyDoll.DollyDoll dollyDoll) [0x0004c] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Service\PlaybackService.cs:29 
+  at Somekasu.DollyDoll.DollyDoll.get_Playback () [0x00000] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Component\DollyDoll.cs:31 
+  at Somekasu.DollyDoll.DollyDollService.RegenerateSplines () [0x0045f] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Service\DollyDollService.cs:172 
+  at Somekasu.DollyDoll.DollyDollService.<.ctor>b__6_0 (UniRx.Unit _) [0x00000] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Service\DollyDollService.cs:34 
+  at UniRx.Observer+Subscribe`1[T].OnNext (T value) [0x0000f] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Observer.cs:165 
+  at UniRx.Operators.MergeObservable`1+MergeOuterObserver+Merge[T].OnNext (T value) [0x00019] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Merge.cs:108 
+  at UniRx.Operators.ThrottleFirstFrameObservable`1+ThrottleFirstFrame[T].OnNext (T value) [0x00023] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\ThrottleFirstFrame.cs:65 
+  at UniRx.InternalUtil.ListObserver`1[T].OnNext (T value) [0x00012] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\ListObserver.cs:39 
+  at UniRx.Subject`1[T].OnNext (T value) [0x00001] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Subject.cs:62 
+  at Somekasu.DollyDoll.DollyDollService.<.ctor>b__6_1 (UniRx.Unit _) [0x00000] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Service\DollyDollService.cs:47 
+  at UniRx.Observer+Subscribe`1[T].OnNext (T value) [0x0000f] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Observer.cs:165 
+  at UniRx.Operators.MergeObservable`1+MergeOuterObserver+Merge[T].OnNext (T value) [0x00019] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Merge.cs:108 
+  at UniRx.Operators.SelectObservable`2+Select[T,TR].OnNext (T value) [0x00040] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Select.cs:92 
+  at UniRx.Operators.FromMicroCoroutineObservable`1+FromMicroCoroutine[T].OnNext (T value) [0x00002] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\FromCoroutine.cs:119 
+  at UniRx.ObserveExtensions+<>c__DisplayClass2_1`2[TSource,TProperty].<ObserveEveryValueChanged>b__1 (System.IObserver`1[T] observer, System.Threading.CancellationToken cancellationToken) [0x00053] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\ObserveExtensions.cs:102 
+  at UniRx.Operators.FromMicroCoroutineObservable`1[T].SubscribeCore (System.IObserver`1[T] observer, System.IDisposable cancel) [0x00035] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\FromCoroutine.cs:94 
+  at UniRx.Operators.OperatorObservableBase`1[T].Subscribe (System.IObserver`1[T] observer) [0x00050] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\OperatorObservableBase.cs:34 
+  at UniRx.Operators.SelectObservable`2[T,TR].SubscribeCore (System.IObserver`1[T] observer, System.IDisposable cancel) [0x0000f] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Select.cs:61 
+  at UniRx.Operators.OperatorObservableBase`1[T].Subscribe (System.IObserver`1[T] observer) [0x00050] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\OperatorObservableBase.cs:34 
+  at UniRx.Operators.MergeObservable`1+MergeOuterObserver[T].OnNext (System.IObservable`1[T] value) [0x0001c] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Merge.cs:65 
+  at UniRx.Operators.ToObservableObservable`1+ToObservable[T].Run () [0x000ca] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\ToObservable.cs:66 
+  at UniRx.Operators.ToObservableObservable`1[T].SubscribeCore (System.IObserver`1[T] observer, System.IDisposable cancel) [0x00001] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\ToObservable.cs:20 
+  at UniRx.Operators.OperatorObservableBase`1[T].Subscribe (System.IObserver`1[T] observer) [0x00050] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\OperatorObservableBase.cs:34 
+  at UniRx.Operators.MergeObservable`1+MergeOuterObserver[T].Run () [0x00029] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Merge.cs:56 
+  at UniRx.Operators.MergeObservable`1[T].SubscribeCore (System.IObserver`1[T] observer, System.IDisposable cancel) [0x00020] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Merge.cs:32 
+  at UniRx.Operators.OperatorObservableBase`1[T].Subscribe (System.IObserver`1[T] observer) [0x00050] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\OperatorObservableBase.cs:34 
+  at UniRx.ObservableExtensions.Subscribe[T] (System.IObservable`1[T] source, System.Action`1[T] onNext) [0x00001] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Observer.cs:414 
+  at Somekasu.DollyDoll.DollyDollService..ctor (Somekasu.DollyDoll.DollyDoll dollyDoll) [0x00080] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Service\DollyDollService.cs:38 
+  at Somekasu.DollyDoll.DollyDoll.get_Service () [0x00000] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Component\DollyDoll.cs:27 
+  at Somekasu.DollyDoll.DollyDoll.get_OnSplineUpdated () [0x00000] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Component\DollyDoll.cs:139 
+  at Somekasu.DollyDoll.PlaybackService..ctor (Somekasu.DollyDoll.DollyDoll dollyDoll) [0x0004c] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Service\PlaybackService.cs:29 
+  at Somekasu.DollyDoll.DollyDoll.get_Playback () [0x00000] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Component\DollyDoll.cs:31 
+  at Somekasu.DollyDoll.DollyDollService.RegenerateSplines () [0x0045f] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Service\DollyDollService.cs:172 
+  at Somekasu.DollyDoll.DollyDollService.<.ctor>b__6_0 (UniRx.Unit _) [0x00000] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Service\DollyDollService.cs:34 
+  at UniRx.Observer+Subscribe`1[T].OnNext (T value) [0x0000f] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Observer.cs:165 
+  at UniRx.Operators.MergeObservable`1+MergeOuterObserver+Merge[T].OnNext (T value) [0x00019] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Merge.cs:108 
+  at UniRx.Operators.ThrottleFirstFrameObservable`1+ThrottleFirstFrame[T].OnNext (T value) [0x00023] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\ThrottleFirstFrame.cs:65 
+  at UniRx.InternalUtil.ListObserver`1[T].OnNext (T value) [0x00012] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\ListObserver.cs:39 
+  at UniRx.Subject`1[T].OnNext (T value) [0x00001] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Subject.cs:62 
+  at Somekasu.DollyDoll.DollyDollService.<.ctor>b__6_1 (UniRx.Unit _) [0x00000] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Service\DollyDollService.cs:47 
+  at UniRx.Observer+Subscribe`1[T].OnNext (T value) [0x0000f] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Observer.cs:165 
+  at UniRx.Operators.MergeObservable`1+MergeOuterObserver+Merge[T].OnNext (T value) [0x00019] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Merge.cs:108 
+  at UniRx.Operators.SelectObservable`2+Select[T,TR].OnNext (T value) [0x00040] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Select.cs:92 
+  at UniRx.Operators.FromMicroCoroutineObservable`1+FromMicroCoroutine[T].OnNext (T value) [0x00002] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\FromCoroutine.cs:119 
+  at UniRx.ObserveExtensions+<>c__DisplayClass2_1`2[TSource,TProperty].<ObserveEveryValueChanged>b__1 (System.IObserver`1[T] observer, System.Threading.CancellationToken cancellationToken) [0x00053] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\ObserveExtensions.cs:102 
+  at UniRx.Operators.FromMicroCoroutineObservable`1[T].SubscribeCore (System.IObserver`1[T] observer, System.IDisposable cancel) [0x00035] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\FromCoroutine.cs:94 
+  at UniRx.Operators.OperatorObservableBase`1[T].Subscribe (System.IObserver`1[T] observer) [0x00050] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\OperatorObservableBase.cs:34 
+  at UniRx.Operators.SelectObservable`2[T,TR].SubscribeCore (System.IObserver`1[T] observer, System.IDisposable cancel) [0x0000f] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Select.cs:61 
+  at UniRx.Operators.OperatorObservableBase`1[T].Subscribe (System.IObserver`1[T] observer) [0x00050] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\OperatorObservableBase.cs:34 
+  at UniRx.Operators.MergeObservable`1+MergeOuterObserver[T].OnNext (System.IObservable`1[T] value) [0x0001c] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Merge.cs:65 
+  at UniRx.Operators.ToObservableObservable`1+ToObservable[T].Run () [0x000ca] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\ToObservable.cs:66 
+  at UniRx.Operators.ToObservableObservable`1[T].SubscribeCore (System.IObserver`1[T] observer, System.IDisposable cancel) [0x00001] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\ToObservable.cs:20 
+  at UniRx.Operators.OperatorObservableBase`1[T].Subscribe (System.IObserver`1[T] observer) [0x00050] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\OperatorObservableBase.cs:34 
+  at UniRx.Operators.MergeObservable`1+MergeOuterObserver[T].Run () [0x00029] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Merge.cs:56 
+  at UniRx.Operators.MergeObservable`1[T].SubscribeCore (System.IObserver`1[T] observer, System.IDisposable cancel) [0x00020] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Merge.cs:32 
+  at UniRx.Operators.OperatorObservableBase`1[T].Subscribe (System.IObserver`1[T] observer) [0x00050] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\OperatorObservableBase.cs:34 
+  at UniRx.ObservableExtensions.Subscribe[T] (System.IObservable`1[T] source, System.Action`1[T] onNext) [0x00001] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Observer.cs:414 
+  at Somekasu.DollyDoll.DollyDollService..ctor (Somekasu.DollyDoll.DollyDoll dollyDoll) [0x00080] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Service\DollyDollService.cs:38 
+  at Somekasu.DollyDoll.DollyDoll.get_Service () [0x00000] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Component\DollyDoll.cs:27 
+  at Somekasu.DollyDoll.DollyDoll.get_OnSplineUpdated () [0x00000] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Component\DollyDoll.cs:139 
+  at Somekasu.DollyDoll.PlaybackService..ctor (Somekasu.DollyDoll.DollyDoll dollyDoll) [0x0004c] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Service\PlaybackService.cs:29 
+  at Somekasu.DollyDoll.DollyDoll.get_Playback () [0x00000] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Component\DollyDoll.cs:31 
+  at Somekasu.DollyDoll.DollyDollService.RegenerateSplines () [0x0045f] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Service\DollyDollService.cs:172 
+  at Somekasu.DollyDoll.DollyDollService.<.ctor>b__6_0 (UniRx.Unit _) [0x00000] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Service\DollyDollService.cs:34 
+  at UniRx.Observer+Subscribe`1[T].OnNext (T value) [0x0000f] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Observer.cs:165 
+  at UniRx.Operators.MergeObservable`1+MergeOuterObserver+Merge[T].OnNext (T value) [0x00019] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Merge.cs:108 
+  at UniRx.Operators.ThrottleFirstFrameObservable`1+ThrottleFirstFrame[T].OnNext (T value) [0x00023] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\ThrottleFirstFrame.cs:65 
+  at UniRx.InternalUtil.ListObserver`1[T].OnNext (T value) [0x00012] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\ListObserver.cs:39 
+  at UniRx.Subject`1[T].OnNext (T value) [0x00001] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Subject.cs:62 
+  at Somekasu.DollyDoll.DollyDollService.<.ctor>b__6_1 (UniRx.Unit _) [0x00000] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Service\DollyDollService.cs:47 
+  at UniRx.Observer+Subscribe`1[T].OnNext (T value) [0x0000f] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Observer.cs:165 
+  at UniRx.Operators.MergeObservable`1+MergeOuterObserver+Merge[T].OnNext (T value) [0x00019] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Merge.cs:108 
+  at UniRx.Operators.SelectObservable`2+Select[T,TR].OnNext (T value) [0x00040] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Select.cs:92 
+  at UniRx.Operators.FromMicroCoroutineObservable`1+FromMicroCoroutine[T].OnNext (T value) [0x00002] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\FromCoroutine.cs:119 
+  at UniRx.ObserveExtensions+<>c__DisplayClass2_1`2[TSource,TProperty].<ObserveEveryValueChanged>b__1 (System.IObserver`1[T] observer, System.Threading.CancellationToken cancellationToken) [0x00053] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\ObserveExtensions.cs:102 
+  at UniRx.Operators.FromMicroCoroutineObservable`1[T].SubscribeCore (System.IObserver`1[T] observer, System.IDisposable cancel) [0x00035] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\FromCoroutine.cs:94 
+  at UniRx.Operators.OperatorObservableBase`1[T].Subscribe (System.IObserver`1[T] observer) [0x00050] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\OperatorObservableBase.cs:34 
+  at UniRx.Operators.SelectObservable`2[T,TR].SubscribeCore (System.IObserver`1[T] observer, System.IDisposable cancel) [0x0000f] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Select.cs:61 
+  at UniRx.Operators.OperatorObservableBase`1[T].Subscribe (System.IObserver`1[T] observer) [0x00050] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\OperatorObservableBase.cs:34 
+  at UniRx.Operators.MergeObservable`1+MergeOuterObserver[T].OnNext (System.IObservable`1[T] value) [0x0001c] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Merge.cs:65 
+  at UniRx.Operators.ToObservableObservable`1+ToObservable[T].Run () [0x000ca] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\ToObservable.cs:66 
+  at UniRx.Operators.ToObservableObservable`1[T].SubscribeCore (System.IObserver`1[T] observer, System.IDisposable cancel) [0x00001] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\ToObservable.cs:20 
+  at UniRx.Operators.OperatorObservableBase`1[T].Subscribe (System.IObserver`1[T] observer) [0x00050] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\OperatorObservableBase.cs:34 
+  at UniRx.Operators.MergeObservable`1+MergeOuterObserver[T].Run () [0x00029] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Merge.cs:56 
+  at UniRx.Operators.MergeObservable`1[T].SubscribeCore (System.IObserver`1[T] observer, System.IDisposable cancel) [0x00020] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Merge.cs:32 
+  at UniRx.Operators.OperatorObservableBase`1[T].Subscribe (System.IObserver`1[T] observer) [0x00050] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\OperatorObservableBase.cs:34 
+  at UniRx.ObservableExtensions.Subscribe[T] (System.IObservable`1[T] source, System.Action`1[T] onNext) [0x00001] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Observer.cs:414 
+  at Somekasu.DollyDoll.DollyDollService..ctor (Somekasu.DollyDoll.DollyDoll dollyDoll) [0x00080] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Service\DollyDollService.cs:38 
+  at Somekasu.DollyDoll.DollyDoll.get_Service () [0x00000] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Component\DollyDoll.cs:27 
+  at Somekasu.DollyDoll.DollyDoll.get_OnSplineUpdated () [0x00000] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Component\DollyDoll.cs:139 
+  at Somekasu.DollyDoll.PlaybackService..ctor (Somekasu.DollyDoll.DollyDoll dollyDoll) [0x0004c] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Service\PlaybackService.cs:29 
+  at Somekasu.DollyDoll.DollyDoll.get_Playback () [0x00000] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Component\DollyDoll.cs:31 
+  at Somekasu.DollyDoll.DollyDollService.RegenerateSplines () [0x0045f] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Service\DollyDollService.cs:172 
+  at Somekasu.DollyDoll.DollyDollService.<.ctor>b__6_0 (UniRx.Unit _) [0x00000] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Service\DollyDollService.cs:34 
+  at UniRx.Observer+Subscribe`1[T].OnNext (T value) [0x0000f] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Observer.cs:165 
+  at UniRx.Operators.MergeObservable`1+MergeOuterObserver+Merge[T].OnNext (T value) [0x00019] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Merge.cs:108 
+  at UniRx.Operators.ThrottleFirstFrameObservable`1+ThrottleFirstFrame[T].OnNext (T value) [0x00023] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\ThrottleFirstFrame.cs:65 
+  at UniRx.InternalUtil.ListObserver`1[T].OnNext (T value) [0x00012] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\ListObserver.cs:39 
+  at UniRx.Subject`1[T].OnNext (T value) [0x00001] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Subject.cs:62 
+  at Somekasu.DollyDoll.DollyDollService.<.ctor>b__6_1 (UniRx.Unit _) [0x00000] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Service\DollyDollService.cs:47 
+  at UniRx.Observer+Subscribe`1[T].OnNext (T value) [0x0000f] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Observer.cs:165 
+  at UniRx.Operators.MergeObservable`1+MergeOuterObserver+Merge[T].OnNext (T value) [0x00019] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Merge.cs:108 
+  at UniRx.Operators.SelectObservable`2+Select[T,TR].OnNext (T value) [0x00040] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Select.cs:92 
+  at UniRx.Operators.FromMicroCoroutineObservable`1+FromMicroCoroutine[T].OnNext (T value) [0x00002] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\FromCoroutine.cs:119 
+  at UniRx.ObserveExtensions+<>c__DisplayClass2_1`2[TSource,TProperty].<ObserveEveryValueChanged>b__1 (System.IObserver`1[T] observer, System.Threading.CancellationToken cancellationToken) [0x00053] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\ObserveExtensions.cs:102 
+  at UniRx.Operators.FromMicroCoroutineObservable`1[T].SubscribeCore (System.IObserver`1[T] observer, System.IDisposable cancel) [0x00035] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\FromCoroutine.cs:94 
+  at UniRx.Operators.OperatorObservableBase`1[T].Subscribe (System.IObserver`1[T] observer) [0x00050] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\OperatorObservableBase.cs:34 
+  at UniRx.Operators.SelectObservable`2[T,TR].SubscribeCore (System.IObserver`1[T] observer, System.IDisposable cancel) [0x0000f] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Select.cs:61 
+  at UniRx.Operators.OperatorObservableBase`1[T].Subscribe (System.IObserver`1[T] observer) [0x00050] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\OperatorObservableBase.cs:34 
+  at UniRx.Operators.MergeObservable`1+MergeOuterObserver[T].OnNext (System.IObservable`1[T] value) [0x0001c] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Merge.cs:65 
+  at UniRx.Operators.ToObservableObservable`1+ToObservable[T].Run () [0x000ca] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\ToObservable.cs:66 
+  at UniRx.Operators.ToObservableObservable`1[T].SubscribeCore (System.IObserver`1[T] observer, System.IDisposable cancel) [0x00001] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\ToObservable.cs:20 
+  at UniRx.Operators.OperatorObservableBase`1[T].Subscribe (System.IObserver`1[T] observer) [0x00050] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\OperatorObservableBase.cs:34 
+  at UniRx.Operators.MergeObservable`1+MergeOuterObserver[T].Run () [0x00029] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Merge.cs:56 
+  at UniRx.Operators.MergeObservable`1[T].SubscribeCore (System.IObserver`1[T] observer, System.IDisposable cancel) [0x00020] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Merge.cs:32 
+  at UniRx.Operators.OperatorObservableBase`1[T].Subscribe (System.IObserver`1[T] observer) [0x00050] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\OperatorObservableBase.cs:34 
+  at UniRx.ObservableExtensions.Subscribe[T] (System.IObservable`1[T] source, System.Action`1[T] onNext) [0x00001] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Observer.cs:414 
+  at Somekasu.DollyDoll.DollyDollService..ctor (Somekasu.DollyDoll.DollyDoll dollyDoll) [0x00080] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Service\DollyDollService.cs:38 
+  at Somekasu.DollyDoll.DollyDoll.get_Service () [0x00000] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Component\DollyDoll.cs:27 
+  at Somekasu.DollyDoll.DollyDoll.get_OnSplineUpdated () [0x00000] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Component\DollyDoll.cs:139 
+  at Somekasu.DollyDoll.PlaybackService..ctor (Somekasu.DollyDoll.DollyDoll dollyDoll) [0x0004c] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Service\PlaybackService.cs:29 
+  at Somekasu.DollyDoll.DollyDoll.get_Playback () [0x00000] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Component\DollyDoll.cs:31 
+  at Somekasu.DollyDoll.DollyDollService.RegenerateSplines () [0x0045f] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Service\DollyDollService.cs:172 
+  at Somekasu.DollyDoll.DollyDollService.<.ctor>b__6_0 (UniRx.Unit _) [0x00000] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Service\DollyDollService.cs:34 
+  at UniRx.Observer+Subscribe`1[T].OnNext (T value) [0x0000f] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Observer.cs:165 
+  at UniRx.Operators.MergeObservable`1+MergeOuterObserver+Merge[T].OnNext (T value) [0x00019] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Merge.cs:108 
+  at UniRx.Operators.ThrottleFirstFrameObservable`1+ThrottleFirstFrame[T].OnNext (T value) [0x00023] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\ThrottleFirstFrame.cs:65 
+  at UniRx.InternalUtil.ListObserver`1[T].OnNext (T value) [0x00012] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\ListObserver.cs:39 
+  at UniRx.Subject`1[T].OnNext (T value) [0x00001] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Subject.cs:62 
+  at Somekasu.DollyDoll.DollyDollService.<.ctor>b__6_1 (UniRx.Unit _) [0x00000] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Runtime\Service\DollyDollService.cs:47 
+  at UniRx.Observer+Subscribe`1[T].OnNext (T value) [0x0000f] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Observer.cs:165 
+  at UniRx.Operators.MergeObservable`1+MergeOuterObserver+Merge[T].OnNext (T value) [0x00019] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Merge.cs:108 
+  at UniRx.Operators.SelectObservable`2+Select[T,TR].OnNext (T value) [0x00040] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Select.cs:92 
+  at UniRx.Operators.FromMicroCoroutineObservable`1+FromMicroCoroutine[T].OnNext (T value) [0x0001d] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\FromCoroutine.cs:124 
+  at UniRx.ObserveExtensions+<>c__DisplayClass2_1`2[TSource,TProperty].<ObserveEveryValueChanged>b__1 (System.IObserver`1[T] observer, System.Threading.CancellationToken cancellationToken) [0x00053] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\ObserveExtensions.cs:102 
+  at UniRx.Operators.FromMicroCoroutineObservable`1[T].SubscribeCore (System.IObserver`1[T] observer, System.IDisposable cancel) [0x00035] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\FromCoroutine.cs:94 
+  at UniRx.Operators.OperatorObservableBase`1[T].Subscribe (System.IObserver`1[T] observer) [0x00050] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\OperatorObservableBase.cs:34 
+  at UniRx.Operators.SelectObservable`2[T,TR].SubscribeCore (System.IObserver`1[T] observer, System.IDisposable cancel) [0x0000f] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Select.cs:61 
+  at UniRx.Operators.OperatorObservableBase`1[T].Subscribe (System.IObserver`1[T] observer) [0x00050] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\OperatorObservableBase.cs:34 
+  at UniRx.Operators.MergeObservable`1+MergeOuterObserver[T].OnNext (System.IObservable`1[T] value) [0x0001c] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\Merge.cs:65 
+  at UniRx.Operators.ToObservableObservable`1+ToObservable[T].Run () [0x000ca] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\ToObservable.cs:66 
+  at UniRx.Operators.ToObservableObservable`1[T].SubscribeCore (System.IObserver`1[T] observer, System.IDisposable cancel) [0x00001] in D:\VRC\VRChatProjects\ExtensionDev\Assets\SomekaVrcUnityExtension\DollyDoll\Ext\UniRx\Editor\ToObservable.cs:20 
+...
+UnityEngine.DebugLogHandler:Internal_LogException(Exception, Object)
+UnityEngine.DebugLogHandler:LogException(Exception, Object)
+UnityEngine.Logger:LogException(Exception, Object)
+UnityEngine.Debug:LogException(Exception)
+UnityEngine.<>c:<RegisterUECatcher>b__0_0(Object, UnhandledExceptionEventArgs)
+
+(Filename: Assets/SomekaVrcUnityExtension/DollyDoll/Runtime/MyLog.cs Line: 238)
+
