@@ -47,8 +47,18 @@
             <ui:DropdownField label="Looping" name="Looping" />
         </ui:Foldout>
         <ui:Foldout text="ノード操作" name="NodeOperationSection">
-            <ui:VisualElement class="dd-button-box" style="flex-grow: 1;">
-                <ui:Button text="ノード追加" parse-escape-sequences="true" display-tooltip-when-elided="true" name="AddNodeButton" style="width: 100px;" />
+            <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
+                <ui:Label tabindex="-1" text="新規ノード追加" parse-escape-sequences="true" display-tooltip-when-elided="true" name="AddNodeLabel" style="-unity-text-align: middle-left; margin-left: 3px;" />
+                <ui:VisualElement class="dd-button-box" style="flex-grow: 1;">
+                    <ui:Button text="実行" parse-escape-sequences="true" display-tooltip-when-elided="true" name="AddNodeButton" style="width: 100px;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
+                <ui:Label tabindex="-1" text="LookAtを設定" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SetLookAtLabel" style="margin-left: 3px; align-self: flex-start; margin-top: 4px;" />
+                <ui:VisualElement class="dd-button-box" style="flex-grow: 1;">
+                    <ui:Button text="全ノード" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SetLookAtToAllButton" style="width: 100px;" />
+                    <ui:Button text="選択ノード" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SetLookAtToSelectionButton" style="width: 100px;" />
+                </ui:VisualElement>
             </ui:VisualElement>
         </ui:Foldout>
         <ui:Foldout text="円周ノード生成" name="CircleGenSection">
@@ -57,7 +67,6 @@
             <ui:FloatField label="YDelta" value="42.2" name="YDelta" />
             <ui:FloatField label="ThetaDelta" value="42.2" name="ThetaDelta" />
             <ui:IntegerField label="Count" value="42" name="Count" />
-            <uie:ObjectField label="LookAt" name="LookAt" type="UnityEngine.Transform, UnityEngine.CoreModule" />
             <ui:VisualElement name="CircleGenHelpBox" class="dd-help-box" style="display: none;">
                 <ui:VisualElement class="dd-help-box-warning-icon" />
                 <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CircleGenHelpBoxLabel" />

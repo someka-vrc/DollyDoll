@@ -6,7 +6,7 @@ using UnityEditor;
 using UniRx;
 using System.Linq;
 using UnityEngine.UIElements;
-using UnityEditor.UIElements;
+
 using System.Text.RegularExpressions;
 
 namespace Somekasu.DollyDoll
@@ -23,13 +23,15 @@ namespace Somekasu.DollyDoll
         ///<summary> ローカライズされた文字列を格納する辞書 </summary>
         internal static readonly Dictionary<string, Dictionary<string, string>> Words = new();
         internal static ReactiveProperty<string> CurrentLocale = new(); // デフォルトロケール
+        private static CompositeDisposable _disposables;
+
         ///<summary> I18Nアセット変更イベント </summary>
         private static Subject<Unit> _assetsChanged;
         ///<summary> I18Nコンテンツ更新イベント用 </summary>
         private static Subject<Unit> _contentsUpdated;
         ///<summary> I18Nコンテンツ更新イベント </summary>
         internal static IObservable<Unit> ContentsUpdated => _contentsUpdated;
-        internal static bool IsWatching = false;
+        internal static bool IsWatching => _disposables != null && !_disposables.IsDisposed;
 #pragma warning restore IDE1006 // Naming Styles
 
         internal static void SetLocaleByDisplayName(string displayName)
@@ -136,7 +138,7 @@ namespace Somekasu.DollyDoll
         }
 
         /// <summary>
-        /// VisualElementのルートに対して、"ue/{tag}"で始まるキーを持つローカライズされた文字列を適用
+        /// "ue/{tag}"で始まるキーについて、ルートVisualElement配下の対応する要素にローカライズされた文字列を適用
         /// </summary>
         /// <param name="root"></param>
         internal static void Apply(string tag, VisualElement root)
@@ -322,17 +324,11 @@ namespace Somekasu.DollyDoll
                 case Toggle toggle:
                     toggle.label = value;
                     break;
-                case ObjectField objectField:
-                    objectField.label = value;
-                    break;
                 case Vector2Field vector2Field:
                     vector2Field.label = value;
                     break;
                 case Vector3Field vector3Field:
                     vector3Field.label = value;
-                    break;
-                case ColorField colorField:
-                    colorField.label = value;
                     break;
                 case BoundsField boundsField:
                     boundsField.label = value;
@@ -376,21 +372,17 @@ namespace Somekasu.DollyDoll
         /// カタログエントリー変更、カタログ内容変更、ロケール変更を検知し、必要に応じて再読み込みを行う。
         /// カタログ内容変更は<see cref="I18nAssetContentWatcher"/>によって監視される。
         /// </summary>
-        internal static void Watch(CompositeDisposable disposables)
+        internal static IDisposable Subscribe()
         {
-            if (IsWatching)
-            {
-                MyLog.LogDebug("I18n is already being watched. Skipping re-initialization.");
-                return;
-            }
-            _assetsChanged = new Subject<Unit>().AddTo(disposables);
-            _contentsUpdated = new Subject<Unit>().AddTo(disposables);
+            _disposables = new CompositeDisposable();
+            _assetsChanged = new Subject<Unit>().AddTo(_disposables);
+            _contentsUpdated = new Subject<Unit>().AddTo(_disposables);
             // カタログエントリー変更検知
             Observable.Interval(TimeSpan.FromSeconds(0.05))
                 .Select(_ => Catalog.Select(c => "" + c.GetHashCode()).Aggregate("", (a, b) => a + b))
                 .DistinctUntilChanged()
                 .Subscribe(_ => _assetsChanged?.OnNext(Unit.Default))
-                .AddTo(disposables);
+                .AddTo(_disposables);
             // カタログ変更イベント
             _assetsChanged.Throttle(TimeSpan.FromSeconds(0.1))
                 .Subscribe(_ =>
@@ -399,16 +391,16 @@ namespace Somekasu.DollyDoll
                     Load(); // カタログの内容が変更されたら再読み込み
                     _contentsUpdated?.OnNext(Unit.Default);
                 })
-                .AddTo(disposables);
+                .AddTo(_disposables);
             // ロケール変更イベント
             CurrentLocale.Subscribe(locale =>
             {
                 Load(); // 現在のロケールが変更されたら再読み込み
                 _contentsUpdated?.OnNext(Unit.Default);
             })
-            .AddTo(disposables);
+            .AddTo(_disposables);
 
-            IsWatching = true;
+            return _disposables;
         }
 
         ///<summary> <see cref="I18nAssetContentWatcher"/>からの通知用 </summary>

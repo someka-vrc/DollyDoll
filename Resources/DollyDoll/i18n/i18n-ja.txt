@@ -54,7 +54,13 @@ ue/DollyDoll/Looping/choices=なし - None,繰り返す - Repeat,巻き戻す - 
 
 # NodeOperationSection
 ue/DollyDoll/NodeOperationSection/text=ノード操作
-ue/DollyDoll/AddNodeButton/text=ノード追加
+ue/DollyDoll/AddNodeLabel/text=新規ノード追加
+ue/DollyDoll/AddNodeButton/text=実行
+ue/DollyDoll/SetLookAtLabel/text=LookAtを設定
+ue/DollyDoll/SetLookAtToAllButton/text=全ノード
+ue/DollyDoll/SetLookAtToAllButton/tooltip=全ノードにLookAtコンストレイントを付与します。
+ue/DollyDoll/SetLookAtToSelectionButton/text=選択ノード
+ue/DollyDoll/SetLookAtToSelectionButton/tooltip=選択ノードにLookAtコンストレイントを付与します。
 
 # CircleGenSection
 ue/DollyDoll/CircleGenSection/text=円周ノード生成
@@ -68,8 +74,6 @@ ue/DollyDoll/ThetaDelta/label=角度差分
 ue/DollyDoll/ThetaDelta/tooltip=ノード間の角度（度数）です。正なら反時計回り、負なら時計回りに配置されます。90なら4つで1周になります。
 ue/DollyDoll/Count/label=ノード数
 ue/DollyDoll/Count/tooltip=生成するノードの数です。1以上を指定してください。
-ue/DollyDoll/LookAt/label=LookAt
-ue/DollyDoll/LookAt/tooltip=各ノードが向く対象のTransformです。未指定の場合は中心方向を向きます。
 ue/DollyDoll/CircleGenButton/text=ノードを生成
 
 # SettingSection
@@ -127,6 +131,7 @@ DollyDollCameraNode/T/label=T
 DollyDollCameraNode/T/tooltip=始点からこのノードまでの長さとスプライン総延長の比率
 
 ### dialog
+dialog/title/warning=DollyDoll - 警告
 dialog/title/error=DollyDoll - エラー
 dialog/message/invalidFileExtension=ファイルの拡張子が無効です。JSONファイルを選択してください。
 dialog/title/load=DollyDoll - JSONファイル選択
@@ -134,4 +139,4 @@ dialog/title/save=DollyDoll - JSONファイル選択
 dialog/message/jsonParseFailed=JSONの解析に失敗しました。カメラパス用のファイルでないか、このツールにバグがある可能性があります。
 
 ### Osc
-Osc/error/nonAscii=パスが非ASCII文字を含んでいます。VRChatの仕様上、非ASCII文字はサポートされていません。Assetsの親フォルダに、ドキュメントフォルダを指す 'myDocuments' というシンボリックリンクを作成すると、このツールはそのパスを使用します。
+Osc/error/nonAscii=出力先のパスが非ASCII文字を含んでいます。VRChatの仕様上、非ASCII文字がサポートされていないため、OSC送信に失敗する可能性があります。Assetsの親フォルダに、ドキュメントフォルダを指す 'myDocuments' というシンボリックリンクを作成すると、このツールはそのパスを使用します。

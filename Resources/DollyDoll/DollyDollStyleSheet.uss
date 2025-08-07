@@ -51,6 +51,7 @@ Foldout > #unity-content {
     flex-direction: row;
     flex-wrap: wrap;
     align-self: flex-end;
+    justify-content: flex-end;
 }
 
 .dd-button-box > Button {

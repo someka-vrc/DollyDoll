@@ -53,7 +53,13 @@ ue/DollyDoll/Looping/choices=None,Repeat,Reverse,Revolve
 
 # NodeOperationSection
 ue/DollyDoll/NodeOperationSection/text=Node Operations
-ue/DollyDoll/AddNodeButton/text=Add Node
+ue/DollyDoll/AddNodeLabel/text=Add a New Node
+ue/DollyDoll/AddNodeButton/text=Execute
+ue/DollyDoll/SetLookAtLabel/text=Set LookAt
+ue/DollyDoll/SetLookAtToAllButton/text=To All Nodes
+ue/DollyDoll/SetLookAtToAllButton/tooltip=Adds a LookAt constraint to all nodes.
+ue/DollyDoll/SetLookAtToSelectionButton/text=To Selection
+ue/DollyDoll/SetLookAtToSelectionButton/tooltip=Adds a LookAt constraint to selected nodes.
 
 # CircleGenSection
 ue/DollyDoll/CircleGenSection/text=Circle Node Generation
@@ -67,8 +73,6 @@ ue/DollyDoll/ThetaDelta/label=Angle Delta
 ue/DollyDoll/ThetaDelta/tooltip=The angle (degrees) between nodes. Positive for counterclockwise, negative for clockwise placement. 90 makes 4 nodes for one full circle.
 ue/DollyDoll/Count/label=Node Count
 ue/DollyDoll/Count/tooltip=The number of nodes to generate. Please specify 1 or more.
-ue/DollyDoll/LookAt/label=Look At
-ue/DollyDoll/LookAt/tooltip=The Transform target that each node should look at. If not specified, nodes will look toward the center.
 ue/DollyDoll/CircleGenButton/text=Generate
 
 # Settings Section
@@ -126,6 +130,7 @@ DollyDollCameraNode/T/label=T
 DollyDollCameraNode/T/tooltip=Ratio of the distance from the start to this node to the total spline length
 
 ### dialog
+dialog/title/warning=DollyDoll - Warning
 dialog/title/error=DollyDoll - Error
 dialog/message/invalidFileExtension=Invalid file extension. Please select a JSON file.
 dialog/title/load=DollyDoll - Select JSON File
@@ -133,4 +138,4 @@ dialog/title/save=DollyDoll - Select JSON File
 dialog/message/jsonParseFailed=Failed to parse JSON. It may not be a camera path file, or there may be a bug in this tool.
 
 ### Osc
-Osc/error/nonAscii=The path contains non-ASCII characters. Due to VRChat specifications, non-ASCII characters are not supported. If you create a symbolic link named 'myDocuments' in the parent folder of Assets pointing to your Documents folder, this tool will use that path.
+Osc/error/nonAscii=The output path contains non-ASCII characters. Due to VRChat specifications, non-ASCII characters are not supported and OSC transmission may fail. If you create a symbolic link named 'myDocuments' in the parent folder of Assets pointing to your Documents folder, this tool will use that path.

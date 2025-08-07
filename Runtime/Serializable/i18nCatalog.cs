@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 namespace Somekasu.DollyDoll
 {
-    [CreateAssetMenu(fileName = "I18nCatalog", menuName = "Someka/i18n/Catalog")]
+    [CreateAssetMenu(fileName = "I18nCatalog", menuName = "Someka/DollyDoll/I18nCatalog")]
     public class I18nCatalog : ScriptableObject
     {
         [SerializeField]

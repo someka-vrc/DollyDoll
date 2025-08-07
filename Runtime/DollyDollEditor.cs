@@ -2,10 +2,13 @@ using System;
 using System.IO;
 using System.Linq;
 using UniRx;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEditor;
+
+#if UNITY_EDITOR
 using UnityEditor.UIElements;
+#endif
 
 namespace Somekasu.DollyDoll
 {
@@ -52,6 +55,9 @@ namespace Somekasu.DollyDoll
         // NodeOperationSection
         private Foldout _nodeOperationSection;
         private Button _addNodeButton;
+        private Label _setLookAtLabel;
+        private Button _setLookAtToAllButton;
+        private Button _setLookAtToSelectionButton;
         // CircleGenSection
         private Foldout _circleGenSection;
         private FloatField _radiusField;
@@ -59,7 +65,6 @@ namespace Somekasu.DollyDoll
         private FloatField _yDeltaField;
         private FloatField _thetaDeltaField;
         private IntegerField _countField;
-        private ObjectField _lookAtField;
         private VisualElement _circleGenHelpBox;
         private Label _circleGenHelpBoxLabel;
         private Button _circleGenButton;
@@ -76,6 +81,11 @@ namespace Somekasu.DollyDoll
             _disposables?.Dispose();
             _disposables = new CompositeDisposable();
 
+            if(_dollyDoll == null)
+            {
+                return;
+            }
+
             Observable.EveryUpdate()
                 .Where(_ => _dollyDoll.enabled && _uiCreated)
                 .Take(1)
@@ -91,9 +101,12 @@ namespace Somekasu.DollyDoll
                     RegisterOscSectionEvents();
                     RegisterNodeOperationSectionEvents();
                     RegisterPlaybackSectionEvents();
+                    #if UNITY_EDITOR
                     RegisterCircleGenSectionEvents();
                     RegisterSettingSectionEvents();
+                    #endif
                     RegisterDollySettingSectionEvents();
+                    RegisterFoldoutStateEvents();
 
                     // 定期的にバリデーション
                     Observable.Interval(TimeSpan.FromSeconds(0.1))
@@ -107,7 +120,6 @@ namespace Somekasu.DollyDoll
 
         private void OnDisable()
         {
-            Undo.undoRedoPerformed += SetValuesToUIElements;
             _disposables?.Dispose();
             _disposables = null;
             _enabled = false;
@@ -115,6 +127,12 @@ namespace Somekasu.DollyDoll
 
         public override VisualElement CreateInspectorGUI()
         {
+            if(_root != null)
+            {
+                // 既にUIが作成されている場合は再利用
+                // インスペクターロック時この関数だけ呼ばれOnEnableは呼ばれないため現状を返す
+                return _root;
+            }
             // UXMLファイルを読み込み
             var visualTree = Resources.Load<VisualTreeAsset>("DollyDoll/DollyDollUIDocument");
             _root = visualTree.CloneTree();
@@ -155,10 +173,12 @@ namespace Somekasu.DollyDoll
             _yDeltaField.SetValueWithoutNotify(_dollyDoll.CircleGen.YDelta);
             _thetaDeltaField.SetValueWithoutNotify(_dollyDoll.CircleGen.ThetaDelta);
             _countField.SetValueWithoutNotify(_dollyDoll.CircleGen.Count);
-            _lookAtField.SetValueWithoutNotify(_dollyDoll.CircleGen.LookAt);
             // SettingSection
             _oscVrcPortField.SetValueWithoutNotify(_dollyDoll.Osc.VrcPort);
             _oscUnityPortField.SetValueWithoutNotify(_dollyDoll.Osc.UnityPort);
+
+            RestoreAllFoldoutStates();
+
         }
 
         private void InitializeUIElements()
@@ -196,6 +216,9 @@ namespace Somekasu.DollyDoll
             // NodeOperationSection
             _nodeOperationSection = _root.Q<Foldout>("NodeOperationSection");
             _addNodeButton = _root.Q<Button>("AddNodeButton");
+            _setLookAtLabel = _root.Q<Label>("SetLookAtLabel");
+            _setLookAtToAllButton = _root.Q<Button>("SetLookAtToAllButton");
+            _setLookAtToSelectionButton = _root.Q<Button>("SetLookAtToSelectionButton");
             // CircleGenSection
             _circleGenSection = _root.Q<Foldout>("CircleGenSection");
             _radiusField = _root.Q<FloatField>("Radius");
@@ -203,7 +226,6 @@ namespace Somekasu.DollyDoll
             _yDeltaField = _root.Q<FloatField>("YDelta");
             _thetaDeltaField = _root.Q<FloatField>("ThetaDelta");
             _countField = _root.Q<IntegerField>("Count");
-            _lookAtField = _root.Q<ObjectField>("LookAt");
             _circleGenHelpBox = _root.Q<VisualElement>("CircleGenHelpBox");
             _circleGenHelpBoxLabel = _root.Q<Label>("CircleGenHelpBoxLabel");
             _circleGenButton = _root.Q<Button>("CircleGenButton");
@@ -295,8 +317,10 @@ namespace Somekasu.DollyDoll
         private void RegisterNodeOperationSectionEvents()
         {
             _addNodeButton.clicked += _dollyDoll.AddNode;
+            _setLookAtToAllButton.clicked += _dollyDoll.SetLookAtToAllNodes;
+            _setLookAtToSelectionButton.clicked += _dollyDoll.SetLookAtToSelectionNodes;
         }
-
+#if UNITY_EDITOR
         private void RegisterCircleGenSectionEvents()
         {
             _radiusField.BindProperty(serializedObject.FindProperty("CircleGen.Radius"));
@@ -304,7 +328,6 @@ namespace Somekasu.DollyDoll
             _yDeltaField.BindProperty(serializedObject.FindProperty("CircleGen.YDelta"));
             _thetaDeltaField.BindProperty(serializedObject.FindProperty("CircleGen.ThetaDelta"));
             _countField.BindProperty(serializedObject.FindProperty("CircleGen.Count"));
-            _lookAtField.BindProperty(serializedObject.FindProperty("CircleGen.LookAt"));
             _circleGenButton.clicked += _dollyDoll.GenerateCircleNodes;
 
             _radiusField.RegisterValueChangedCallback(evt => ValidateCircleGen());
@@ -312,7 +335,6 @@ namespace Somekasu.DollyDoll
             _yDeltaField.RegisterValueChangedCallback(evt => ValidateCircleGen());
             _thetaDeltaField.RegisterValueChangedCallback(evt => ValidateCircleGen());
             _countField.RegisterValueChangedCallback(evt => ValidateCircleGen());
-            _lookAtField.RegisterValueChangedCallback(evt => ValidateCircleGen());
         }
 
         private void RegisterSettingSectionEvents()
@@ -331,7 +353,7 @@ namespace Somekasu.DollyDoll
             _oscVrcPortField.BindProperty(serializedObject.FindProperty("Osc.VrcPort"));
             _oscUnityPortField.BindProperty(serializedObject.FindProperty("Osc.UnityPort"));
         }
-
+#endif
         private void SetupLanguageChoices()
         {
             _localeField.choices = I18n.Catalog.Select(c => c.DisplayName).ToList();
@@ -358,23 +380,39 @@ namespace Somekasu.DollyDoll
         }
 
         /// <summary>
-        /// ドロップダウンフィールドのイベント登録
+        /// このクラスのFoldout型フィールドをすべて抽出し、DollyDoll.FoldoutStatesから復元
         /// </summary>
-        // private void RegisterDropdownFieldEvent<T>(DropdownField dropdownField, System.Action<T> onValueChanged) where T : System.Enum
-        // {
-        //     dropdownField.RegisterValueChangedCallback(evt =>
-        //     {
-        //         int selectedIndex = dropdownField.index;
-        //         if (selectedIndex >= 0)
-        //         {
-        //             T enumValue = (T)System.Enum.ToObject(typeof(T), selectedIndex);
-        //             Undo.SetCurrentGroupName($"Edit {dropdownField.name}");
-        //             Undo.RecordObject(_dollyDoll, $"Edit {dropdownField.name} record");
-        //             onValueChanged(enumValue);
-        //             EditorUtility.SetDirty(_dollyDoll);
-        //         }
-        //     });
-        // }
+        private void RestoreAllFoldoutStates()
+        {
+            var kvs = typeof(DollyDollEditor)
+                .GetFields(System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
+                .Where(f => typeof(Foldout).IsAssignableFrom(f.FieldType))
+                .Select(f => f.GetValue(this) as Foldout)
+                .Where(f => _dollyDoll.FoldoutStates.ContainsKey(f.name))
+                .Select(foldout => new { foldout, value = _dollyDoll.FoldoutStates[foldout.name] });
+
+            foreach (var kv in kvs)
+            {
+                kv.foldout.SetValueWithoutNotify(kv.value);
+            }
+        }
+
+        /// <summary>
+        /// Foldoutの開閉イベントを <see cref="DollyDoll.FoldoutStates"/> に保存
+        /// </summary>
+        private void RegisterFoldoutStateEvents()
+        {
+            // リフレクションでFoldout型のフィールドを取得し、イベント登録
+            var foldoutFields = typeof(DollyDollEditor)
+                .GetFields(System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
+                .Where(f => typeof(Foldout).IsAssignableFrom(f.FieldType))
+                .Select(f => f.GetValue(this) as Foldout);
+
+            foreach (var foldout in foldoutFields)
+            {
+                foldout.RegisterValueChangedCallback(evt => _dollyDoll.FoldoutStates[foldout.name] = evt.newValue);
+            }
+        }
 
         private void UpdateUI()
         {
@@ -419,6 +457,10 @@ namespace Somekasu.DollyDoll
         ///<summary> カメラノード数の警告チェック </summary>
         private void ValidateNodesCount()
         {
+            if (_dollyDoll == null)
+            {
+                return;
+            }
             string errorMsg = "";
             var allNodes = _dollyDoll.Nodes.ToList();
 

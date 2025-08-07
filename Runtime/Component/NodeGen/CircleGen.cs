@@ -24,10 +24,6 @@ namespace Somekasu.DollyDoll
         ///<summary>ノード数（1以上）</summary>
         [SerializeField]
         internal int Count = 8;
-        ///<summary>ノードが向くTransform。未指定なら水平に中心を向く</summary>
-        [SerializeField]
-        internal Transform LookAt = null;
-
 
         internal void GenerateCircleNodes(Func<DollyDollCameraNode> nodeCompFactory, Transform rootTransform)
         {
@@ -44,25 +40,12 @@ namespace Somekasu.DollyDoll
                 );
                 var comp = nodeCompFactory();
                 comp.transform.position = position;
-                if (LookAt != null && LookAt)
-                {
-                    var lookAtComp = comp.gameObject.AddComponent<LookAtConstraint>();
-                    lookAtComp.AddSource(new ConstraintSource
-                    {
-                        sourceTransform = LookAt,
-                        weight = 1f
-                    });
-                    lookAtComp.constraintActive = true;
-                }
-                else
-                {
-                    Vector3 target = rootTransform.position;
-                    target.y = comp.transform.position.y; // 水平に保つ
-                    Vector3 direction = target - comp.transform.position;
-                    comp.transform.rotation = (direction == Vector3.zero)
-                        ? Quaternion.identity
-                        : Quaternion.LookRotation(direction, Vector3.up);
-                }
+                Vector3 target = rootTransform.position;
+                target.y = comp.transform.position.y; // 水平に保つ
+                Vector3 direction = target - comp.transform.position;
+                comp.transform.rotation = (direction == Vector3.zero)
+                    ? Quaternion.identity
+                    : Quaternion.LookRotation(direction, Vector3.up);
             }
         }
     }

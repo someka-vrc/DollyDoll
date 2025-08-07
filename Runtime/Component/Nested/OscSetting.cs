@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 using UniRx;
+using UnityEditor;
 using UnityEngine;
 
 namespace Somekasu.DollyDoll
@@ -97,6 +98,17 @@ namespace Somekasu.DollyDoll
                             _oscBinds.ForEach(bind => _oscReceiver.Bind(bind));
                             _oscReceiver.Connect();
                         }
+
+                        string jsonPath = _dollyDoll.JSONPath;
+                        if (Regex.IsMatch(jsonPath, @"[^\u0000-\u007F]"))
+                        {
+                            // 非ASCII文字を含む
+                            if (!Directory.Exists("myDocuments"))
+                            {
+                                // シンボリックリンクが存在しない場合はダイアログを表示
+                                EditorUtility.DisplayDialog(I18n.G("dialog/title/warning"), I18n.G("osc/error/nonAscii"), "OK");
+                            }
+                        }
                     }
                     else if (!IsActive.Value || !LoadOnExport.Value)
                     {
@@ -134,14 +146,17 @@ namespace Somekasu.DollyDoll
                 string jsonPath = _dollyDoll.JSONPath;
                 if (Regex.IsMatch(jsonPath, @"[^\u0000-\u007F]"))
                 {
+                    // 非ASCII文字を含む
                     if (Directory.Exists("myDocuments"))
                     {
+                        // 非ASCII文字を含むパスはVRChatの仕様上サポートされていないため、myDocumentsシンボリックリンクを使用
                         string myDocument = System.Environment.GetFolderPath(Environment.SpecialFolder.Personal);
                         string relativePath = Path.GetRelativePath(myDocument, jsonPath);
                         jsonPath = Path.GetFullPath(Path.Combine("myDocuments", relativePath));
                     }
                     else
                     {
+                        // シンボリックリンクが存在しない場合はエラーログを出力
                         MyLog.LogError(I18n.G("osc/error/nonAscii"));
                     }
                 }

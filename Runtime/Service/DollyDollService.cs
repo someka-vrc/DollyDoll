@@ -8,6 +8,7 @@ using System.IO;
 using Newtonsoft.Json;
 using UniRx;
 using Unity.Mathematics;
+using UnityEngine.Animations;
 
 namespace Somekasu.DollyDoll
 {
@@ -292,7 +293,7 @@ namespace Somekasu.DollyDoll
         internal string Load(string path = null)
         {
             bool shouldAsk = string.IsNullOrEmpty(path);
-            if(!shouldAsk && !File.Exists(path))
+            if (!shouldAsk && !File.Exists(path))
             {
                 MyLog.LogWarning($"File not found: {path}");
                 shouldAsk = true;
@@ -333,8 +334,6 @@ namespace Somekasu.DollyDoll
 
             // ゲームオブジェクト配下のオブジェクトを全削除
             ClearChildren();
-
-            _dollyDoll.CircleGen.LookAt = null;
 
             // データごとにノードオブジェクトを生成
             foreach (CameraNode node in nodes)
@@ -380,6 +379,51 @@ namespace Somekasu.DollyDoll
         {
             GameObject added = CreateCameraNode().gameObject;
             EditorGUIUtility.PingObject(added);
+        }
+
+        internal void SetLookAtToAllNodes() => SetLookAt(_dollyDoll.Nodes);
+        internal void SetLookAtToSelectionNodes() => SetLookAt(_dollyDoll.Nodes.Where(n => Selection.gameObjects.Contains(n.gameObject)));
+
+        private void SetLookAt(IEnumerable<DollyDollCameraNode> nodes)
+        {
+            Undo.SetCurrentGroupName("Set LookAt Constraint");
+            GameObject lookAtTarget = CreateLookAtTarget();
+            foreach (var node in nodes)
+            {
+                Undo.RecordObject(node, "Add LookAt Constraint");
+                if (!node.TryGetComponent<LookAtConstraint>(out var lookAtConstraint))
+                {
+                    lookAtConstraint = node.gameObject.AddComponent<LookAtConstraint>();
+                }
+                lookAtConstraint.AddSource(new ConstraintSource
+                {
+                    sourceTransform = lookAtTarget.transform,
+                    weight = 1f
+                });
+                lookAtConstraint.constraintActive = true;
+            }
+        }
+
+        private GameObject CreateLookAtTarget()
+        {
+            // create a new GameObject for LookAt target
+            string lookAtTargetName = GameObjectUtility.GetUniqueNameForSibling(null, "LookAtTarget");
+            GameObject lookAtTarget = new(lookAtTargetName);
+            Undo.RegisterCreatedObjectUndo(lookAtTarget, "Create LookAt Target");
+            // search object with animator component which has non-null avatar
+            Animator animator = GameObject.FindObjectsOfType<Animator>().FirstOrDefault(a => a.avatar != null);
+            // Set position between the avatar's eyes if they exist
+            if (animator != null)
+            {
+                Transform leftEye = animator.GetBoneTransform(HumanBodyBones.LeftEye);
+                Transform rightEye = animator.GetBoneTransform(HumanBodyBones.RightEye);
+                if (leftEye != null && rightEye != null)
+                {
+                    // set position to the average of left and right eye positions
+                    lookAtTarget.transform.position = (leftEye.position + rightEye.position) / 2f;
+                }
+            }
+            return lookAtTarget;
         }
 
         private (CameraNode lastNode, int lastPathIndex, int lastIndex) GetLastNode()

@@ -28,6 +28,12 @@ namespace Somekasu.DollyDoll
         [SerializeField]
         internal CircleGen CircleGen;
 
+        /// <summary>
+        /// Editor Foldoutの開閉状態を保持するDictionary。キーはFoldout名。
+        /// </summary>
+        [NonSerialized]
+        public Dictionary<string, bool> FoldoutStates = new Dictionary<string, bool>();
+
         internal Transform NodesObj
         {
             get
@@ -125,7 +131,7 @@ namespace Somekasu.DollyDoll
 
             I18n.Load();
             I18n.SetLocaleByDisplayName(LocaleName);
-            I18n.Watch(_disposables);
+            I18n.Subscribe().AddTo(_disposables);
 
             var comparer = new FastListEqualityComparer();
             NodesChanged = Observable.Interval(TimeSpan.FromSeconds(0.5))
@@ -164,6 +170,8 @@ namespace Somekasu.DollyDoll
         }
 
         internal void AddNode() => Service.AddNode();
+        internal void SetLookAtToAllNodes() => Service.SetLookAtToAllNodes();
+        internal void SetLookAtToSelectionNodes() => Service.SetLookAtToSelectionNodes();
         internal void GenerateCircleNodes() => CircleGen.GenerateCircleNodes(Service.CreateCameraNode, transform);
     }
 }
